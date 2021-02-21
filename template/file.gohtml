@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>{{ .Desc.Path }}</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+</head>
+<body>
+<div id="nav">
+    <a class="nav-header" href="/index.html"><b>Home</b></a><br>
+    <div class="divider"></div>
+    <b class="nav-header">Messages</b>
+    {{ range allmessages . }}
+        <div class="nav-link"><a href="#{{messageid .Desc}}">{{.Desc.Name}}</a></div>
+    {{end}}
+    <div class="divider"></div>
+    <b class="nav-header">Enums</b>
+    {{ range allenums . }}
+        <div class="nav-link"><a href="#{{messageid .Desc}}">{{.Desc.Name}}</a></div>
+    {{ end }}
+</div>
+<div id="body">
+    <h1>{{ .Desc.Path }}</h1>
+    <div><div class="deprecation-key">Deprecated fields are marked with red text/background</div></div>
+    {{range allmessages .}}
+        {{template "sectionheader.gohtml" .}}
+        <table class="fd-table">
+            <tr class="fd-header">
+                <th>Name</th>
+                <th>Type</th>
+                <th>Oneof</th>
+                <th>Notes</th>
+            </tr>
+            {{range .Fields}}
+                <tr class="fd-row{{if .Desc.Options }}{{if .Desc.Options.Deprecated}} deprecated{{end}}{{end}}">
+                    <td>{{.Desc.Name}}</td>
+                    <td>{{template "type.gohtml" .}}</td>
+                    <td>{{ if .Oneof }}{{.Oneof.Desc.Name}}{{end}}</td>
+                    <td class="fd-field-notes">{{ comments .Comments}}</td>
+                </tr>
+            {{end}}
+        </table>
+        <div class="divider"></div>
+    {{end}}
+    {{ range allenums .}}
+        {{template "sectionheader.gohtml" .}}
+        <table class="fd-table">
+            <tr class="fd-header">
+                <th>Value</th>
+                <th>Notes</th>
+            </tr>
+            {{range .Values}}
+                <tr class="fd-row">
+                    <td>{{.Desc.Name}}</td>
+                    <td class="fd-field-notes">{{ comments .Comments}}</td>
+                </tr>
+            {{end}}
+        </table>
+        <div class="divider"></div>
+    {{end}}
+</div>
+</body>
+</html>

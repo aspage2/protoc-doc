@@ -1,0 +1,41 @@
+
+body {
+    font-family: sans-serif;
+    color: #2b2b2b;
+}
+
+a, a:visited {
+    color: #0050dc;
+}
+
+#nav {
+    width: 250px;
+    margin: 10px;
+    padding: 10px;
+    background: #e7e7e7;
+    border: 1px solid #d0d0d0;
+    border-radius: 3px;
+    font-size: 0.9rem;
+
+    display: inline-block;
+    vertical-align: top;
+}
+
+#body {
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.nav-header {
+    font-size: 1.0rem;
+}
+
+.divider {
+    background: #d0d0d0;
+    margin: 10px 3px;
+    height: 1px;
+}
+
+.fd-field-notes {
+    max-width: 400px;
+}

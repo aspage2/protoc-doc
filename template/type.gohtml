@@ -1,0 +1,7 @@
+{{ if .Message }}
+    <a href="{{fileloc .Message.Desc.ParentFile }}#{{messageid .Message.Desc}}" title="{{.Message.Desc.FullName}}">{{.Message.Desc.Name}}</a>
+{{ else if .Enum }}
+    <a href="{{fileloc .Enum.Desc.ParentFile }}#{{messageid .Enum.Desc}}" title="{{.Enum.Desc.FullName}}">{{.Enum.Desc.Name}}</a>
+{{ else }}
+    <span class="primitive">{{.Desc.Kind}}</span>
+{{ end }}

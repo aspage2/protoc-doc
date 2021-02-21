@@ -1,0 +1,7 @@
+{{ range .Messages }}
+{{ .Desc.Name }}
+{{ .Desc.FullName }}
+{{ .Desc.ParentFile.Path }}
+{{ comments .Comments }}
+-------------
+{{ end }}

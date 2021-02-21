@@ -1,0 +1,9 @@
+<h2 id="{{messageid .Desc}}" class="message-title">{{.Desc.Name}} <a class="anchor" href="#{{messageid .Desc}}">&para;</a></h2>
+<div class="message-full-name">{{.Desc.FullName}}</div>
+{{ with comments .Comments }}
+    {{if .}}
+        <div class="message-description">
+            <pre><code>{{.}}</code></pre>
+        </div>
+    {{end}}
+{{end}}
