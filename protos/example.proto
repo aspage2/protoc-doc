@@ -1,0 +1,50 @@
+
+syntax = "proto3";
+
+option go_package = ".;example";
+
+// Find a person in the database.
+message GetPersonRequest {
+  oneof by {
+    string email = 1;
+    // DEPRECATED. Search by phone extension will be removed in the future.
+    string phone_ext = 2 [deprecated = true];
+  }
+}
+
+// A person's role in the organization
+enum OrganizationRole {
+  ORG_INVALID = 0;
+  ORG_UNSET = 1;
+
+  // Any non-managerial, tech-related role: includes ops, support and dev
+  ORG_IT = 2;
+  // Any upper-management role, including executive officers
+  ORG_MANAGEMENT = 3;
+  // Any human-resources role
+  ORG_HR = 4;
+  // Any legal role
+  ORG_LEGAL = 5;
+  // Accounting roles
+  ORG_ACCOUNTING = 6;
+}
+
+// Information about the person.
+message Person {
+  // The person's email
+  string email = 1;
+  // The four-digit phone extension for this person.
+  string phone_ext = 2;
+  // The person's current role
+  OrganizationRole role = 4;
+  // DEPRECATED FIELD. Please use the `role` enum.
+  string role_name = 3 [deprecated = true];
+}
+
+// The People service manages people in the organization.
+service People {
+  // GetPerson finds & returns a person in the database based
+  // on search criteria. If a person isn't found, a Person with
+  // an empty email ("") is returned.
+  rpc GetPerson(GetPersonRequest) returns (Person);
+}

@@ -24,6 +24,10 @@ a, a:visited {
     vertical-align: top;
 }
 
+.nav-link {
+    margin: 3px;
+}
+
 #body {
     margin-left: 20px;
     display: inline-block;

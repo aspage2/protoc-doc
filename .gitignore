@@ -1,5 +1,5 @@
-doc
 html/*
 !html/static
 protos/*
 !protos/example.proto
+build/*
