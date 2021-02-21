@@ -1,4 +1,4 @@
-package main
+package protodoc
 
 import (
 	"fmt"
@@ -116,7 +116,7 @@ func sortedFiles(files []*protogen.File) []*protogen.File {
 	return fs
 }
 
-func realMain(p *protogen.Plugin) error {
+func RealMain(p *protogen.Plugin) error {
 	tmpl, err := template.New("").Funcs(fm).ParseFiles(templates...)
 	if err != nil {
 		return err
@@ -134,8 +134,4 @@ func realMain(p *protogen.Plugin) error {
 		}
 	}
 	return nil
-}
-
-func main() {
-	protogen.Options{}.Run(realMain)
 }

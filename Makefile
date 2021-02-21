@@ -6,7 +6,7 @@ clean:
 	find html/ -not -name html -not -regex html/static.* | xargs rm -rf
 
 test:
-	go test .
+	go test . -v
 
 build:
 	go build -o build/protoc-gen-doc .
