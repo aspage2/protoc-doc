@@ -8,13 +8,16 @@ a, a:visited {
     color: #0050dc;
 }
 
+#nav, .message-description {
+    background: #e7e7e7;
+    border: 1px solid #d0d0d0;
+    border-radius: 3px;
+}
+
 #nav {
     width: 250px;
     margin: 10px;
     padding: 10px;
-    background: #e7e7e7;
-    border: 1px solid #d0d0d0;
-    border-radius: 3px;
     font-size: 0.9rem;
 
     display: inline-block;
@@ -36,6 +39,61 @@ a, a:visited {
     height: 1px;
 }
 
+.fd-table {
+    border-collapse: collapse;
+}
+
+.fd-row:not(:last-child) td {
+    border-bottom: 1px solid #d0d0d0;
+}
+
 .fd-field-notes {
     max-width: 400px;
+}
+
+.fd-header th {
+    background: #2b2b2b;
+    color: white;
+}
+
+.fd-table td, .fd-table th {
+    padding: 10px;
+}
+
+.primitive {
+    color: darkorange;
+    font-weight: bold;
+}
+
+.message-title {
+    margin-bottom: 5px;
+}
+.message-full-name {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+.anchor {
+    display: none;
+    color: #2b2b2b;
+}
+.message-title:hover .anchor {
+    display: inline;
+}
+
+.message-description {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.fd-row.deprecated td, .deprecation-key{
+    background: #ffc4d7;
+    color: darkred;
+}
+
+.deprecation-key {
+    margin: 5px;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ad4646;
 }
