@@ -8,6 +8,11 @@
 <div id="nav">
     <a class="nav-header" href="/index.html"><b>Home</b></a><br>
     <div class="divider"></div>
+    <b class="nav-header">Services</b>
+    {{ range .Services }}
+        <div class="nav-link"><a href="#{{messageid .Desc}}">{{.Desc.Name}}</a></div>
+    {{ end }}
+    <div class="divider"></div>
     <b class="nav-header">Messages</b>
     {{ range allmessages . }}
         <div class="nav-link"><a href="#{{messageid .Desc}}">{{.Desc.Name}}</a></div>
@@ -20,7 +25,31 @@
 </div>
 <div id="body">
     <h1>{{ .Desc.Path }}</h1>
-    <div><div class="deprecation-key">Deprecated fields are marked with red text/background</div></div>
+    <div>
+        <div class="deprecation-key">Deprecated fields are marked with red text/background</div>
+    </div>
+    {{range .Services}}
+        {{template "sectionheader.gohtml" .}}
+        {{range .Methods}}
+            <h3>
+                <span class="primitive">rpc</span>
+                {{.Desc.Name}}
+                (<a href="{{fileloc .Input.Desc.ParentFile }}#{{messageid .Input.Desc}}"
+                    title="{{.Input.Desc.FullName}}">{{.Input.Desc.Name}}</a>)
+                <span class="primitive">returns</span>
+                (<a href="{{fileloc .Output.Desc.ParentFile }}#{{messageid .Output.Desc}}"
+                   title="{{.Output.Desc.FullName}}">{{.Output.Desc.Name}}</a>)
+            </h3>
+            {{ with comments .Comments }}
+                {{if .}}
+                    <div class="message-description">
+                        <pre><code>{{.}}</code></pre>
+                    </div>
+                {{end}}
+            {{end}}
+        {{end}}
+        <div class="divider"></div>
+    {{end}}
     {{range allmessages .}}
         {{template "sectionheader.gohtml" .}}
         <table class="fd-table">

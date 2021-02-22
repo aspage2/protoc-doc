@@ -1,4 +1,4 @@
-module doc
+module github.com/aspage2/protoc-doc
 
 go 1.15
 

@@ -1,7 +1,7 @@
 package main
 
 import (
-	protodoc "doc"
+	protodoc "github.com/aspage2/protoc-doc"
 	"google.golang.org/protobuf/compiler/protogen"
 )
 
