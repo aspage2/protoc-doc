@@ -99,4 +99,3 @@ func sortedFiles(files []*protogen.File) []*protogen.File {
 
 	return fs
 }
-

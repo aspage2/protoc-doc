@@ -41,7 +41,7 @@ func TestCommentString(t *testing.T) {
 			"Leading detached 1",
 			"Leading detached 2",
 		},
-		Leading: "Leading comment",
+		Leading:  "Leading comment",
 		Trailing: "Trailing Comment",
 	}
 
