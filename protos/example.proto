@@ -1,6 +1,7 @@
 
 syntax = "proto3";
 
+package example;
 option go_package = ".;example";
 
 // Find a person in the database.

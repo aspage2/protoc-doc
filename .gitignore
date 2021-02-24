@@ -1,5 +1,6 @@
 html/*
-!html/static
+!html/.gitkeep
 protos/*
 !protos/example.proto
 build/*
+bindata.go

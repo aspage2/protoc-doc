@@ -34,3 +34,20 @@ func TestAllMessages(t *testing.T) {
 	assert.True(t, contains(&m2, ms))
 	assert.True(t, contains(&m3, ms))
 }
+
+func TestCommentString(t *testing.T) {
+	cs := protogen.CommentSet{
+		LeadingDetached: []protogen.Comments{
+			"Leading detached 1",
+			"Leading detached 2",
+		},
+		Leading: "Leading comment",
+		Trailing: "Trailing Comment",
+	}
+
+	exp := `Leading detached 1
+Leading detached 2
+Leading comment
+Trailing Comment`
+	assert.Equal(t, exp, commentString(cs))
+}
