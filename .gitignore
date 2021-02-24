@@ -4,3 +4,4 @@ protos/*
 !protos/example.proto
 build/*
 bindata.go
+protoc-gen-doc
