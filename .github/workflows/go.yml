@@ -19,7 +19,11 @@ jobs:
         go-version: 1.16
 
     - name: Build
-      run: go build -v ./...
+      run: go build -v ./cmd/protoc-gen-doc
 
     - name: Test
       run: go test -v ./...
+    
+    - uses: actions/upload-artifact@v2
+      with:
+        path: protoc-gen-doc
