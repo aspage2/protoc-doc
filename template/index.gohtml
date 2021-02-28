@@ -3,14 +3,21 @@
 <head>
     <title>Index</title>
     <link href="/static/style.css" type="text/css" rel="stylesheet">
-    <link href="/static/index.css" type="text/css" rel="stylesheet">
+    <style>
+        .file-link {
+            padding: 10px;
+        }
+        .file-link > a{
+            font-size: 1.1rem;
+        }
+    </style>
 </head>
 <body>
 <h1>Index</h1>
-<ul>
-    {{range .}}
-        <li><a href="{{fileloc .Desc}}">{{.Desc.Path}}</a></li>
-    {{end}}
-</ul>
+{{range .}}
+    <div class="file-link">
+        <a href="{{fileloc .Desc}}">{{.Desc.Path}}</a>
+    </div>
+{{end}}
 </body>
 </html>

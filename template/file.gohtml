@@ -38,7 +38,7 @@
                     title="{{.Input.Desc.FullName}}">{{.Input.Desc.Name}}</a>)
                 <span class="primitive">returns</span>
                 (<a href="{{fileloc .Output.Desc.ParentFile }}#{{messageid .Output.Desc}}"
-                   title="{{.Output.Desc.FullName}}">{{.Output.Desc.Name}}</a>)
+                    title="{{.Output.Desc.FullName}}">{{.Output.Desc.Name}}</a>)
             </h3>
             {{ with comments .Comments }}
                 {{if .}}
@@ -52,22 +52,26 @@
     {{end}}
     {{range allmessages .}}
         {{template "sectionheader.gohtml" .}}
-        <table class="fd-table">
-            <tr class="fd-header">
-                <th>Name</th>
-                <th>Type</th>
-                <th>Oneof</th>
-                <th>Notes</th>
-            </tr>
-            {{range .Fields}}
-                <tr class="fd-row{{if .Desc.Options }}{{if .Desc.Options.Deprecated}} deprecated{{end}}{{end}}">
-                    <td>{{.Desc.Name}}</td>
-                    <td>{{template "type.gohtml" .}}</td>
-                    <td>{{ if .Oneof }}{{.Oneof.Desc.Name}}{{end}}</td>
-                    <td class="fd-field-notes">{{ comments .Comments}}</td>
+        {{ if .Fields }}
+            <table class="fd-table">
+                <tr class="fd-header">
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Oneof</th>
+                    <th>Notes</th>
                 </tr>
-            {{end}}
-        </table>
+                {{range .Fields}}
+                    <tr class="fd-row{{if .Desc.Options }}{{if .Desc.Options.Deprecated}} deprecated{{end}}{{end}}">
+                        <td>{{.Desc.Name}}</td>
+                        <td>{{template "type.gohtml" .}}</td>
+                        <td>{{ if .Oneof }}{{.Oneof.Desc.Name}}{{end}}</td>
+                        <td class="fd-field-notes">{{ comments .Comments}}</td>
+                    </tr>
+                {{end}}
+            </table>
+        {{ else }}
+            <i>No declared fields</i>
+        {{end}}
         <div class="divider"></div>
     {{end}}
     {{ range allenums .}}

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/reflect/protoreflect"
+	"path/filepath"
 	"sort"
 	"strings"
 )
@@ -98,4 +99,26 @@ func sortedFiles(files []*protogen.File) []*protogen.File {
 	sort.Sort(fs)
 
 	return fs
+}
+
+func LongestCommonPrefix(a []string, b[]string) []string {
+	i := 0
+	for len(a) > i && len(b) > i && a[i] == b[i] {
+		i ++
+	}
+	return a[:i]
+}
+
+type Node struct {
+	DirName string
+	Files []*protogen.File
+	Children []*Node
+}
+
+
+func (n *Node) Insert(path []string, f *protogen.File) {
+
+	for _, child := range n.Children {
+
+	}
 }

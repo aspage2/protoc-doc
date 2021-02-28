@@ -1,3 +1,7 @@
+// This is the example file.
+// It's got some nice comments here.
+
+// What?
 
 syntax = "proto3";
 

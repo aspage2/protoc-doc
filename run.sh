@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-go run ./cmd
+go run ./cmd/protoc-gen-doc
